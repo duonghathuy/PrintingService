@@ -90,8 +90,17 @@ section {
     width: 200px;
     justify-content: space-around;
 }
-.header .right-side .username, .header .right-side .seperator{
+
+.header .right-side .username-header, .header .right-side .seperator{
     font-size: 16px;
+}
+
+.username-header {
+    font-weight: 600;
+}
+
+.username-header:hover {
+    text-decoration: underline;
 }
 
 .header .left-side .menu-bar {

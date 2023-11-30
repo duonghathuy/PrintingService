@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch vụ sinh viên</title>
+    <title>Cập nhật thông tin cá nhân</title>
 
     <!-- custom css file link -->
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="StudentServices.css" >
+    <link rel="stylesheet" type="text/css" href="../style.css" >
+    <link rel="stylesheet" type="text/css" href="UpdateProfile.css" >
 
     <!-- js file link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="UpdateProfile.js"></script>
     <script src="../script.js"></script>
-    <script src="StudentServices.js"></script>
+    
 </head>
 <body>
     <!-- header section starts -->
@@ -30,7 +31,7 @@
                 
                 <div class="menu-bar">
                     <div class="first-option"><a href="">trang chủ</a></div>
-                    <div class="second-option"><a href="" >dịch vụ của tôi</a></div>
+                    <div class="second-option"><a href="../StudentServices/StudentServices.html" >dịch vụ của tôi</a></div>
                 </div>
             </div>
         
@@ -47,23 +48,64 @@
     <!-- header section ends -->
 
 
+
+
     <!-- body section starts -->
 
     <div class="body">
-        <h1 class="title">dịch vụ của tôi</h1>
-
-        <div class="service-list">
-            <div><a href="">đăng kí in tài liệu</a></div>
-            <div><a href="">mua thêm trang in</a></div>
-            <div class="last-service"><a href="">nhật kí sử dụng dịch vụ in</a></div>
+        <h1 class="title">Cập nhật thông tin cá nhân</h1>
+        <div class="add-address">
+            <p class="title">Thêm địa chỉ mới:</p>
+            <form class="update-address">
+                <input type="text" class="street" name="street" placeholder="Ấp/Đường">
+                <input type="text" class="commune" name="commune" placeholder="Xã/Phường">
+                <input type="text" class="district" name="district" placeholder="Huyện/Quận">
+                <input type="text" class="province" name="province" placeholder="Tỉnh/Thành Phố">
+            </form>
+            <button type="button" class="insert-btn btn">Thêm</button>
+            <button type="button" class="update-btn btn display-none">Cập nhật</button>
+            <button type="button" class="cancel-btn btn display-none">Hủy cập nhật</button>
         </div>
+        <div class="update-address">
+            <p class="title">Các địa chỉ hiện tại:</p>
+            <div class="address">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Ấp/Đường</th>
+                            <th>Xã/Phường</th>
+                            <th>Huyện/Quận</th>
+                            <th>Tỉnh/Thành Phố</th>
+                            <th class="request-status-th">Tùy chỉnh</th>
+                        </tr>
+                    </thead>
+                    <tbody class="addresses-list">
+                        <tr>
+                            <td class="index">1</td>
+                            <td class="street">Ấp Thuận Tây</td>
+                            <td class="commune">Xã Thuận Thành</td>
+                            <td class="district">Huyện Cần Giuộc</td>
+                            <td class="province">Tỉnh Long An</td>
+                            <td class="choose">
+                                <a class="edit-btn btn" value="1">Sửa</a>
+                                <span>/</span>
+                                <a class="delete-btn btn" value="1">Xóa</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
     </div>
 
     <!-- body section ends -->
 
 
-    <!-- footer section starts -->
 
+
+    <!-- footer section starts -->
     <footer id="app-footer">
         <div class="footer-container">
             <section class="footer">
@@ -93,7 +135,6 @@
             </div>
         </div>
     </footer>
-
     <!-- footer section ends -->
 </body>
 </html>

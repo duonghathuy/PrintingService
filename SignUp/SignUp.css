@@ -1,0 +1,84 @@
+.header {
+    background-color: #210F7A;
+}
+
+.header .left-side .logo p {
+    color: #ffffff;
+}
+
+.login-container {
+    font-weight: 700;
+    border: 1px solid #000;
+    border-radius: 4px;
+    background-color: #EEEEEE;
+    margin: 20px 0;
+    padding: 20px;
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: -250px;
+}
+
+.login-container p.title {
+    font-size: 26px;
+    color: #990033;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #777777;
+}
+
+form div {
+    margin: 10px 0;
+}
+
+form div p {
+    font-size: 16px;
+    color: #777777;
+    margin: 5px 0;
+}
+
+form div input {
+    font-size: 16px;
+    color: #000;
+    background-color: #FFFFDC;
+    height: 43.5px;
+    width: 458px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #777777;
+    border-radius: 4px;
+}
+
+form div input:focus {
+    border: 2px solid #288cff;
+}
+
+form div.confirm-password {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #777777;
+}
+
+form button {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #016DCB;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.other-option {
+    font-size: 12px;
+    font-weight: 450;
+    margin: 10px 0;
+}
+
+#login-now {
+    color: #016DCB;
+    text-decoration: underline;
+}
+
+.email.email-input:hover {
+    text-decoration: none;
+}

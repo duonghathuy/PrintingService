@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dịch vụ sinh viên</title>
+    <title>Thông tin cá nhân</title>
 
     <!-- custom css file link -->
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="StudentServices.css" >
+    <link rel="stylesheet" type="text/css" href="../style.css" >
+    <link rel="stylesheet" type="text/css" href="Profile.css" >
 
     <!-- js file link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="Profile.js"></script>
     <script src="../script.js"></script>
-    <script src="StudentServices.js"></script>
 </head>
 <body>
     <!-- header section starts -->
@@ -30,7 +30,7 @@
                 
                 <div class="menu-bar">
                     <div class="first-option"><a href="">trang chủ</a></div>
-                    <div class="second-option"><a href="" >dịch vụ của tôi</a></div>
+                    <div class="second-option"><a href="../StudentServices/StudentServices.html" >dịch vụ của tôi</a></div>
                 </div>
             </div>
         
@@ -47,23 +47,63 @@
     <!-- header section ends -->
 
 
+
+
     <!-- body section starts -->
 
     <div class="body">
-        <h1 class="title">dịch vụ của tôi</h1>
-
-        <div class="service-list">
-            <div><a href="">đăng kí in tài liệu</a></div>
-            <div><a href="">mua thêm trang in</a></div>
-            <div class="last-service"><a href="">nhật kí sử dụng dịch vụ in</a></div>
+        <h1 class="title">Thông tin cá nhân</h1>
+        <div class="profile">
+            <table>
+                <tr>
+                    <th>Mã số</th>
+                    <td class="id">2110103</td>
+                </tr>
+                <tr>
+                  <th>Họ và tên</th>
+                  <td class="name">Hà Thùy Dương</td>
+                </tr>
+                <tr>
+                    <th>Ngày sinh</th>
+                    <td class="birthday">15/02/2003</td>
+                </tr>
+                <tr>
+                    <th>Giới tính</th>
+                    <td class="sex">Nữ</td>
+                </tr>
+                <tr>
+                    <th>Vai trò</th>
+                    <td class="role">Sinh viên</td>
+                </tr>
+                <tr>
+                    <th>Tên tài khoản</th>
+                    <td class="username">duong.hathuy</td>
+                </tr>
+                <tr>
+                    <th>Địa chỉ email</th>
+                    <td class="mail">duong.hathuy@hcmut.edu.vn</td>
+                </tr>
+                <tr>
+                    <th>Địa chỉ thường trú</th>
+                    <td>
+                        <ul class="addresses">
+                            <li>Xã Thuận Thành, Huyện Cần Giuộc, Tỉnh Long An.</li>
+                            <li>Xã Thuận Thành, Huyện Cần Giuộc, Tỉnh Long An.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" class="edit-btn">Cập nhật</button>
         </div>
+        
     </div>
 
     <!-- body section ends -->
 
 
-    <!-- footer section starts -->
 
+
+    <!-- footer section starts -->
     <footer id="app-footer">
         <div class="footer-container">
             <section class="footer">
@@ -93,7 +133,13 @@
             </div>
         </div>
     </footer>
-
     <!-- footer section ends -->
+
+
+
+
+
+
+
 </body>
 </html>
