@@ -2,6 +2,14 @@
 @include '../ConnectDB.php';
 set_time_limit(500);
 //header("Refresh: 7");
+$Name = "Sinh viên";
+if (isset($_GET['id'])) {
+    $userId = $_GET['id'];
+    $nameUser = mysqli_query($conn, "SELECT `getName`('$userId') AS `getName`;");
+    $getName = $nameUser->fetch_all(MYSQLI_ASSOC);
+    $Name = $getName[0]['getName'];
+    header('location:ServiceUserLog.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,8 +59,8 @@ set_time_limit(500);
             </div>
 
             <div class="right-side">
-                <div class="spso-name">
-                    Sinh viên
+                <div class="username">
+                    <?php echo $Name ?>
                 </div>
                 <div class="seperator">|</div>
                 <div>
@@ -88,17 +96,17 @@ set_time_limit(500);
     <!-- body section starts -->
     <?php
     if (isset($_POST['error'])) {
-        $result = mysqli_query($conn, "CALL displayLogError('201423')");
+        $result = mysqli_query($conn, "CALL displayLogError('214365')");
 
     } // call procedure displayLog with parameter: user ID
     else if (isset($_POST['done'])) {
-        $result = mysqli_query($conn, "CALL displayLogDone('201423')");
+        $result = mysqli_query($conn, "CALL displayLogDone('214365')");
     } else if (isset($_POST['sent'])) {
-        $result = mysqli_query($conn, "CALL displayLogSent('201423')");
+        $result = mysqli_query($conn, "CALL displayLogSent('214365')");
     } else if (isset($_POST['save'])) {
-        $result = mysqli_query($conn, "CALL displayLogSave('201423')");
+        $result = mysqli_query($conn, "CALL displayLogSave('214365')");
     } else {
-        $result = mysqli_query($conn, "CALL displayLog('201423')");
+        $result = mysqli_query($conn, "CALL displayLog('214365')");
     }
 
     $data = $result->fetch_all(MYSQLI_ASSOC);
