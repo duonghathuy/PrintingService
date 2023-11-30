@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "SSPS_DB";
+$dbname = "ssps_db";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
