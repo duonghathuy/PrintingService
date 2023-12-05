@@ -7,9 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import axios from 'axios';
-import { Button, ClickAwayListener, Stack } from '@mui/material';
-import Input from '@mui/material/Input';
+import { Button, ClickAwayListener, Stack, TextField } from '@mui/material';
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -33,9 +32,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-export default function StatisticTable({filterStart, filterEnd, faculty, level, handleDelete}) {
+export default function StatisticTable({filterStart, filterEnd, faculty, level, handleDelete, updateLevel}) {
   const [data, setData] = useState([]);
+  const [updateId, setUpdateId] = React.useState(null);
   useEffect(() => {
+    console.log(level, faculty)
     const fetchData = async () => {
         const reqData = await fetch("http://localhost:5050/rangestudent", {
           method : 'POST',
@@ -46,22 +47,18 @@ export default function StatisticTable({filterStart, filterEnd, faculty, level, 
         setData(resData);
     };
     fetchData();
-}, [filterStart, filterEnd, faculty]);
-  const [message, setMessage] = React.useState()
-  // const handleDelete = async (id)=>{
-  //   let res = await fetch("http://localhost:5050/deleteuser/"+id,{
-  //     method: "DELETE",
-  //     headers:{'content-type' : 'application/json'}
-
-  //   });
-  //   let resjson = await res.json();
-  //   if(res.status===200){
-  //     setMessage(resjson.success);
-  //   }
-  // };
-  const handleUpdate = async (id)=>{
-    console.log(id)
+}, [filterStart, filterEnd, faculty, level]);
+  
+  const handleUpdate = (count) =>{
+    setUpdateId(count);
+    console.log(count);
   };
+  const [newLevel, setNewLevel] = React.useState(null)
+  const handleUpdateSubmit = id => {
+    updateLevel(id, newLevel)
+    setUpdateId(null)
+  };
+  
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -79,7 +76,7 @@ export default function StatisticTable({filterStart, filterEnd, faculty, level, 
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {data.map((row, count) => (
             <StyledTableRow key={row.ID}>
               <StyledTableCell component="th" scope="row">
                 {row.ID}
@@ -88,13 +85,19 @@ export default function StatisticTable({filterStart, filterEnd, faculty, level, 
               <StyledTableCell align="right">{row.Fname}</StyledTableCell>
               <StyledTableCell align="right">{row.Faculty}</StyledTableCell>
               <StyledTableCell align="right">{row.pages}</StyledTableCell>
-              <StyledTableCell align="right">{row.Level}</StyledTableCell>
-              <StyledTableCell align="right">
-                {/* <Stack align = 'right' direction = "row" spacing = {1}> */}
-                <Button variant='outlined' color='error' onClick = {e => handleDelete(row.ID)}>Xóa</Button>
-                <Button variant='outlined' color='success' onClick = {e => handleUpdate(row.ID)}>Sửa</Button>
-                {/* </Stack> */}
-              </StyledTableCell>
+              {updateId == count? <StyledTableCell align="right"><TextField sx={{width: '60px',}} id="standard-basic" label="Level" variant="standard" size="small" onChange={event =>setNewLevel(event.target.value)}/></StyledTableCell> :  <StyledTableCell align="right">{row.Level}</StyledTableCell> }
+              {
+              updateId == count?  
+                        <StyledTableCell align="right">
+                          <Button variant='outlined' color='success' onClick = {e => handleUpdateSubmit(row.ID)}>Cập nhật</Button>
+                        </StyledTableCell>
+                         :
+                        <StyledTableCell align="right">
+                         <Button variant='outlined' color='error' onClick = {e => handleDelete(row.ID)}>Xóa</Button>
+                         <Button variant='outlined' color='success' onClick = {e => handleUpdate(count)}>Sửa</Button>
+                        </StyledTableCell> 
+              }
+              
             </StyledTableRow>
           ))}
    </TableBody>

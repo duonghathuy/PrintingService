@@ -74,6 +74,21 @@ app.get('/facultyList', (req, res) => {
     });
   });
   
+  
+  app.put('/updateuser/:id', (req, res) => {
+    const {id, newLevel} = req.body
+    console.log(id)
+    const query = 'CALL update_level(?, ?)';
+
+    db.query(query, [id, newLevel], (err, result) => {
+      if (err) {
+        console.error(err)
+        return res.status(500).send(err.message);
+      }
+      res.json(result[0])
+    })
+
+  });
 
 app.delete('/deleteuser/:id', (req, res) => {
     db.query("DELETE FROM service_user WHERE ID = '" + req.params.id+"' ", (err, rresult) =>{

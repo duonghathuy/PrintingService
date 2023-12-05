@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import StatisTicTable from './StatisticTable'
 import Calendar from './date';
-import { Button, Input } from '@mui/material';
+import { Box, Button, Input } from '@mui/material';
 import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
 
@@ -11,8 +11,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle'
 import FacultySelect from './listBox';
-import Faculty from '../Faculty/faculty';
-
+import axios from 'axios'
 
 
 export default function Student(){
@@ -53,25 +52,37 @@ export default function Student(){
       else{
         setFilterStart(start.format("YYYY-MM-DD"));
         setFilterEnd(end.format("YYYY-MM-DD"));
-        setFacultySubmit(faculty)
         setLevelSubmit(level)
+        setFacultySubmit(faculty)
       }
   };
 
   const handleDelete = async (id)=>{
-    let res = await fetch("http://localhost:5050/deleteuser/"+id,{
+    let res = await fetch("http://localhost:5050/deleteuser/"+id ,{
       method: "DELETE",
       headers:{'content-type' : 'application/json'}
 
     });
     let resjson = await res.json();
-    // setFilterStart(start)
-    // setFilterEnd(end)
-    // setFacultySubmit(faculty)
-  };
+    window.location.reload()
 
+  };
+  
+  const updateLevel = async (id, newLevel)=>{
+    try{
+      let res = await axios.put("http://localhost:5050/updateuser/"+id, {id, newLevel});
+    // let resjson = await res.json();
+      window.location.reload();
+  }catch(error){
+    //Canh bao
+    window.alert("Giá trị level không hợp lệ");
+
+  }
+
+    }
+    
   return(
-    <div>
+    <Box margin="20px">
       <Stack direction = "column" spacing = {2} >
         <Stack direction = "row" spacing = {2} alignItems="flex-end">
         <Calendar start={start} end={end} handleStartChange={handleStartChange} handleEndChange={handleEndChange} />
@@ -80,12 +91,12 @@ export default function Student(){
 
 
         </Stack>
-      <StatisTicTable filterStart={filterStart} filterEnd={filterEnd} faculty={facultySubmit} level={levelSubmit} handleDelete={handleDelete}/>
+      <StatisTicTable filterStart={filterStart} filterEnd={filterEnd} faculty={facultySubmit} level={levelSubmit} handleDelete={handleDelete} updateLevel={updateLevel}/>
       </Stack>
       <AlertDialog openDialog={openDialog} handleCloseDialog={handleCloseDialog} />
       
       
-    </div>
+    </Box>
   )
 }
 

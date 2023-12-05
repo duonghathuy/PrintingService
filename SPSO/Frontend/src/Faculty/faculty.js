@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import StatisTicTable from './StatisticTable'
 import Calendar from './date';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
 
@@ -42,7 +42,7 @@ export default function Faculty(){
       }
   };
   return(
-    <div>
+    <Box margin="20px">
       <Stack direction = "column" spacing = {2}>
         <Stack direction = "row" spacing = {2}>
         <Calendar start={start} end={end} handleStartChange={handleStartChange} handleEndChange={handleEndChange} />
@@ -55,7 +55,7 @@ export default function Faculty(){
       <AlertDialog openDialog={openDialog} handleCloseDialog={handleCloseDialog}/>
       
       
-    </div>
+    </Box>
   )
 }
 
