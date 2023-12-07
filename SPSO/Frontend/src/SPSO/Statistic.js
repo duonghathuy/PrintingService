@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import StatisTicTable from './StatisticTable'
 import Calendar from './date';
-import { Box, Button, Input } from '@mui/material';
+import { Box, Button, Card, CardContent, TextField, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import Stack from '@mui/material/Stack';
 
@@ -43,17 +43,36 @@ export default function Student(){
   const [facultySubmit, setFacultySubmit] = React.useState(null)
   const [levelSubmit, setLevelSubmit] = React.useState(null)
 
+  const [lowerBound, setLowerBound] = React.useState("")
+  const  [upperBound, setUpperBound] = React.useState("")
+  const [lowerSubmit, setLowerSubmit] = React.useState(null)
+  const [upperSubmit, setUpperSubmit] = React.useState(null)
+
   
 
   const handleFilterClick = () =>{
       if(start === null || end === null || end < start){
         setOpenDialog(true)
       }
+      else if(lowerBound !== "" && isNaN(lowerBound)){
+        window.alert("Lỗi chọn khoảng: Giá trị dưới không hợp lệ");
+      }
+      else if(upperBound !== "" && isNaN(upperBound)){
+        window.alert("Lỗi chọn khoảng: Giá trị trên không hợp lệ");
+      }
+      else if(lowerBound != "" && upperBound != "" && lowerBound > upperBound){
+        window.alert("Lỗi chọn khoảng");
+      }
       else{
+        if(lowerBound == "") setLowerSubmit(null)
+        else setLowerSubmit(+lowerBound)
+        if(upperBound == "") setUpperSubmit(null)
+        else setUpperSubmit(+upperBound)
         setFilterStart(start.format("YYYY-MM-DD"));
         setFilterEnd(end.format("YYYY-MM-DD"));
         setLevelSubmit(level)
         setFacultySubmit(faculty)
+        
       }
   };
 
@@ -64,6 +83,7 @@ export default function Student(){
 
     });
     let resjson = await res.json();
+    window.alert("Xóa thành công")
     window.location.reload()
 
   };
@@ -78,8 +98,9 @@ export default function Student(){
     window.alert("Giá trị level không hợp lệ");
 
   }
-
-    }
+    };
+  
+  
     
   return(
     <Box margin="20px">
@@ -87,11 +108,25 @@ export default function Student(){
         <Stack direction = "row" spacing = {2} alignItems="flex-end">
         <Calendar start={start} end={end} handleStartChange={handleStartChange} handleEndChange={handleEndChange} />
         <FacultySelect faculty={faculty} handleFacultyChange={handleFacultyChange} level={level} handleLevelChange={handleLevelChange}/>
-        <Button variant="contained" onClick={handleFilterClick}>Lọc</Button>
-
-
         </Stack>
-      <StatisTicTable filterStart={filterStart} filterEnd={filterEnd} faculty={facultySubmit} level={levelSubmit} handleDelete={handleDelete} updateLevel={updateLevel}/>
+        <Stack direction = "row" spacing = {2} alignItems="flex-end">
+          <Card>
+            <CardContent>
+              <Typography sx={{ fontSize: 14 }} gutterBottom>
+                Chọn khoảng
+              </Typography>
+              <Stack direction = "row" spacing = {2} alignItems="flex-end">
+              <TextField label="Lớn hơn" variant="standard" size="small" onChange={event =>setLowerBound(event.target.value)}/>
+              <TextField label="Nhỏ hơn" variant="standard" size="small" onChange={event =>setUpperBound(event.target.value)}/>
+              </Stack>
+            </CardContent>
+          </Card>
+        
+        <Button variant="contained" onClick={handleFilterClick}>Lọc</Button>
+        </Stack>
+
+        
+      <StatisTicTable filterStart={filterStart} filterEnd={filterEnd} faculty={facultySubmit} level={levelSubmit} handleDelete={handleDelete} updateLevel={updateLevel} lower={lowerSubmit} upper={upperSubmit}/>
       </Stack>
       <AlertDialog openDialog={openDialog} handleCloseDialog={handleCloseDialog} />
       
@@ -124,3 +159,4 @@ function AlertDialog({openDialog, handleCloseDialog}) {
       </Dialog>
   );
 }
+// sx={{width: '60px',}}

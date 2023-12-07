@@ -49,10 +49,10 @@ app.get('/facultyList', (req, res) => {
   });
 
   app.post('/rangestudent', (req, res) => {
-    const { start_date, end_date, faculty, level} = req.body;
-    const query = 'CALL sum_pages(?, ?, ?, ?)';  
+    const { start_date, end_date, faculty, level, lower, upper} = req.body;
+    const query = 'CALL sum_pages(?, ?, ?, ?, ?, ?)';  
   
-    db.query(query, [start_date, end_date, faculty, level], (err, result) => {
+    db.query(query, [start_date, end_date, faculty, level, lower, upper], (err, result) => {
       if (err) {
         console.error(err);
         return res.status(500).send(err.message);
