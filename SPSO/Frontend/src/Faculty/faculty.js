@@ -36,7 +36,9 @@ export default function Faculty(){
       if(start === null || end === null || end < start){
         setOpenDialog(true)
       }
+      
       else{
+        
         setFilterStart(start.format("YYYY-MM-DD"));
         setFilterEnd(end.format("YYYY-MM-DD"));
       }
@@ -44,7 +46,7 @@ export default function Faculty(){
   return(
     <Box margin="20px">
       <Stack direction = "column" spacing = {2}>
-        <Stack direction = "row" spacing = {2}>
+        <Stack direction = "row" spacing = {2} alignItems="flex-end">
         <Calendar start={start} end={end} handleStartChange={handleStartChange} handleEndChange={handleEndChange} />
         <Button variant="contained" onClick={handleFilterClick}>Lọc</Button>
 

@@ -32,7 +32,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-export default function StatisticTable({filterStart, filterEnd, faculty, level, handleDelete, updateLevel}) {
+export default function StatisticTable({filterStart, filterEnd, faculty, level, handleDelete, updateLevel, lower, upper}) {
   const [data, setData] = useState([]);
   const [updateId, setUpdateId] = React.useState(null);
   useEffect(() => {
@@ -41,13 +41,13 @@ export default function StatisticTable({filterStart, filterEnd, faculty, level, 
         const reqData = await fetch("http://localhost:5050/rangestudent", {
           method : 'POST',
           headers: {'content-type' : 'application/json'},
-          body : JSON.stringify({start_date : filterStart, end_date : filterEnd, faculty : faculty, level : level})
+          body : JSON.stringify({start_date : filterStart, end_date : filterEnd, faculty : faculty, level : level, lower : lower, upper : upper})
         });
         const resData = await reqData.json();
         setData(resData);
     };
     fetchData();
-}, [filterStart, filterEnd, faculty, level]);
+}, [filterStart, filterEnd, faculty, level, lower, upper]);
   
   const handleUpdate = (count) =>{
     setUpdateId(count);
