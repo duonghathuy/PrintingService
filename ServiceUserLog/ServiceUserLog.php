@@ -30,8 +30,8 @@ if (isset($_GET['id'])) {
     <!-- remix icon link -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <!-- custom css file link -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="stylesheet" type="text/css" href="../ServiceUserLog/logstyle.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 
 <body> <!--onload="timer = setTimeout('auto_reload()',7000);">-->
@@ -198,6 +198,16 @@ if (isset($_GET['id'])) {
 
                 #delete:active {
                     color: black;
+                }
+
+                #user_log_table thead tr th {
+                    position: sticky;
+                    top: 0;
+                    background-color: #FFFFFF;
+                    z-index: 10;
+                    table-layout: fixed;
+                    font-size: 14px;
+                    color: var(--blue);
                 }
             </style>
             <thead>

@@ -1,0 +1,200 @@
+.body {
+    background-color: var(--white);
+    margin: 17px 10%;
+    padding: 16px;
+    min-height: 582px;
+}
+
+.body h1 {
+    font-size: 26px;
+    color: var(--fontColor);
+    text-transform: uppercase;
+}
+
+.body .service-list {
+    margin-top: 31px;
+}
+
+.body .service-list div {
+    padding: 20px;
+    border-top: 1px solid var(--line-color);
+}
+
+.body .service-list div a {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--blue);
+    text-transform: uppercase;
+}
+
+.body .service-list div a:hover {
+    text-decoration: underline;
+}
+
+.body .service-list .last-service {
+    border-bottom: 1px solid var(--line-color);
+}
+
+/* button design */
+.button {
+    display: inline-block;
+    outline: 0;
+    appearance: none;
+    padding: 0px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgb(249, 251, 250);
+    border: 1px solid rgb(137, 151, 155);
+    box-shadow: rgb(6 22 33 / 30%) 0px 1px 2px;
+    color: rgb(61, 79, 88);
+    font-size: 14px;
+    font-weight: 400;
+    height: 36px;
+    transition: all 150ms ease-in-out 0s;
+
+    :hover {
+        color: rgb(61, 79, 88);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(93, 108, 116);
+        box-shadow: rgb(0 0 0 / 30%) 0px 4px 4px, rgb(231 238 236) 0px 0px 0px 3px;
+    }
+}
+
+/*User Log*/
+#wrapfilter {
+    width: 100%;
+    text-align: center;
+    display: inline-flex;
+}
+
+#wrapfilter form input,
+#wrapfilter button {
+    width: 240px;
+}
+
+/* Design dropdown */
+.dropbtn {
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    border-style: solid;
+    border-width: 0.5px;
+    right: 0;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    border-style: solid;
+    border-width: 0.5px;
+}
+
+.dropdown-content a:hover {
+    background-color: #76adec;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: var(--main-color);
+}
+
+/*End design dropdown*/
+/* popup design*/
+@keyframes scale {
+    0% {
+        top: 0;
+        transform: translate(-50%, -50%) scale(0.01);
+    }
+
+    100% {
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.popup {
+    font-size: 13px;
+    background: #ffffff;
+    width: 400px;
+    text-align: center;
+    position: absolute;
+    border-radius: 20px;
+    left: 50%;
+    padding: 0 30px 30px;
+    border: 0.5px solid black;
+    top: 50%;
+    animation: scale 0.7s ease;
+    transform: translate(-50%, -50%) scale(1);
+    z-index: 1000000;
+}
+
+.popup img {
+    margin-top: -50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 10px 0 30px;
+}
+
+.popup .button-group {
+    margin-top: 3%;
+}
+
+.popup .button-group button,
+.popup .button-group a {
+    font-size: 15px;
+    margin: 3%;
+    padding: 1%;
+}
+
+.close-popup {
+    top: 0;
+    transform: translate(-50%, -50%) scale(0.01);
+    visibility: hidden;
+    z-index: -10000000;
+}
+
+.open-popup {
+    display: block;
+}
+
+
+/* Style the buttons */
+.btn {
+    border: 1px solid #22222229;
+    outline: none;
+    padding: 12px 16px;
+    background-color: #156dc07e;
+    cursor: pointer;
+    width: 200px;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.btn.active {
+    background-color: var(--button-background);
+    color: white;
+}
