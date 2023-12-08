@@ -114,123 +114,125 @@ if (isset($_GET['id'])) {
     //}
     ?>
 
-    <div class="body">
+    <div class="body-side">
         <!--<input type="text" id="find" onkeyup="myFunction()" placeholder="Search for file names.."
             title="Type in a name">-->
-        <div class="myBtnContainer" id="wrapfilter">
-            <button style="pointer-events:none;" class="btn active">Trạng
-                Thái:</button>
-            <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
-                <input type="submit" class="btn" name="all" value="Xem tất cả">
-            </form>
-            <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
-                <input type="submit" class="btn" name="done" value="Đã hoàn thành">
-            </form>
-            <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
-                <input type="submit" class="btn" name="sent" value="Đã gửi in">
-            </form>
-            <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
-                <input type="submit" class="btn" name="save" value="Đã lưu">
-            </form>
-            <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
-                <input type="submit" class="btn" name="error" value="Lỗi in">
-            </form>
-        </div>
-        <table style="width:100%" border="1" id="user_log_table">
-            <colgroup>
-                <col span="2" style="width: 240px">
-                <col style="width:200px">
-                <col span="6" style="width: 100px;">
-                <col span="3" style="width: 170px">
-            </colgroup>
-            <style>
-                /*Search file name*/
-                #find {
-                    background-image: url('/css/searchicon.png');
-                    background-position: 10px 10px;
-                    background-repeat: no-repeat;
-                    width: 100%;
-                    font-size: 16px;
-                    padding: 12px 20px 12px 40px;
-                    border: 1px solid #ddd;
-                    margin-bottom: 12px;
-                }
 
-                #user_log_table tr.header,
-                #user_log_table tr:hover {
-                    background-color: #f1f1f1;
-                }
+        <section>
+            <div class="myBtnContainer" id="wrapfilter">
+                <input style="pointer-events:none; text-align:center;" class="btn active" value="Trạng Thái:"></input>
+                <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
+                    <input type="submit" class="btn" name="all" value="Xem tất cả">
+                </form>
+                <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
+                    <input type="submit" class="btn" name="done" value="Đã hoàn thành">
+                </form>
+                <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
+                    <input type="submit" class="btn" name="sent" value="Đã gửi in">
+                </form>
+                <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
+                    <input type="submit" class="btn" name="save" value="Đã lưu">
+                </form>
+                <form action="../ServiceUserLog/ServiceUserLog.php" method="post">
+                    <input type="submit" class="btn" name="error" value="Lỗi in">
+                </form>
+            </div>
+            <table style="width:100%" border="1" id="user_log_table">
+                <colgroup>
+                    <col span="2" style="width: 300px">
+                    <col style="width:180px">
+                    <col span="6" style="width: 180px;">
+                    <col span="3" style="width: 240px">
+                </colgroup>
+                <style>
+                    /*Search file name*/
+                    #find {
+                        background-image: url('/css/searchicon.png');
+                        background-position: 10px 10px;
+                        background-repeat: no-repeat;
+                        width: 100%;
+                        font-size: 16px;
+                        padding: 12px 20px 12px 40px;
+                        border: 1px solid #ddd;
+                        margin-bottom: 12px;
+                    }
 
-                #user_log_table {
-                    table - layout: fixed;
-                    overflow-y: scroll;
-                    height: 500px;
-                    display: block;
-                }
+                    #user_log_table tr.header,
+                    #user_log_table tr:hover {
+                        background-color: #f1f1f1;
+                    }
 
-                #user_log_table,
-                #user_log_table th,
-                #user_log_table td {
-                    border: 1px solid #095195;
-                    text-align: center;
-                }
+                    #user_log_table {
+                        table-layout: fixed;
+                        overflow-y: scroll;
+                        height: 500px;
+                        display: block;
+                        width: 100%;
+                    }
 
-                #user_log_table thead th {
-                    font-size: 13px;
-                    padding: 5px;
-                }
+                    #user_log_table,
+                    #user_log_table th,
+                    #user_log_table td {
+                        border: 1px solid #095195;
+                        text-align: center;
+                    }
 
-                #user_log_table td {
-                    font-size: 12px;
-                    padding: 5px;
-                }
+                    #user_log_table thead th {
+                        font-size: 13px;
+                        padding: 5px;
+                    }
 
-                .link_text {
-                    color: red;
-                    font-weight: 600;
-                    text-decoration: underline;
-                }
+                    #user_log_table td {
+                        font-size: 12px;
+                        padding: 5px;
+                    }
 
-                #delete {
-                    color: black;
-                    text-decoration: underline;
-                }
+                    .link_text {
+                        color: red;
+                        font-weight: 600;
+                        text-decoration: underline;
+                    }
 
-                #delete:active {
-                    color: black;
-                }
+                    #delete {
+                        color: black;
+                        text-decoration: underline;
+                    }
 
-                #user_log_table thead tr th {
-                    position: sticky;
-                    top: 0;
-                    background-color: #FFFFFF;
-                    z-index: 10;
-                    table-layout: fixed;
-                    font-size: 14px;
-                    color: var(--blue);
-                }
-            </style>
-            <thead>
-                <tr>
-                    <th>Thời gian bắt đầu in</th>
-                    <th>Thời gian kết thúc in</th>
-                    <th>Nội dung đăng ký in</th>
-                    <th>Tổng số page</th>
-                    <th>Số mặt</th>
-                    <th>Số bản copy</th>
-                    <th>Số trang trên giấy in</th>
-                    <th>Khổ giấy</th>
-                    <th>Số page bị trừ trong ví</th>
-                    <th>Mã máy in</th>
-                    <th>Trạng thái</th>
-                    <th>Xóa Yêu cầu</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+                    #delete:active {
+                        color: black;
+                    }
 
-                foreach ($data as $row) {
-                    echo '
+                    #user_log_table thead tr th {
+                        position: sticky;
+                        top: 0;
+                        background-color: #FFFFFF;
+                        z-index: 10;
+                        table-layout: fixed;
+                        font-size: 14px;
+                        color: var(--blue);
+                    }
+                </style>
+                <thead>
+                    <tr>
+                        <th>Thời gian bắt đầu in</th>
+                        <th>Thời gian kết thúc in</th>
+                        <th>Nội dung đăng ký in</th>
+                        <th>Tổng số page</th>
+                        <th>Số mặt</th>
+                        <th>Số bản copy</th>
+                        <th>Số trang trên giấy in</th>
+                        <th>Khổ giấy</th>
+                        <th>Số page bị trừ trong ví</th>
+                        <th>Mã máy in</th>
+                        <th>Trạng thái</th>
+                        <th>Xóa Yêu cầu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+
+                    foreach ($data as $row) {
+                        echo '
                         <tr>
                             <td>
                                 ' . $row["starttime"] . '
@@ -263,37 +265,38 @@ if (isset($_GET['id'])) {
                 ' . $row['printer_model'] . '
             </td>
                             <td> ';
-                    if ($row['state_requestprint'] == '0' || empty($row['state_requestprint'])) {
-                        $state = '<a  class="link_text">Đã lưu</a>';
-                        $randTime = rand(1, 10);
-                        //sleep($randTime);
-                        //auto_updateState($conn, $row['requestid'], $row['state_requestprint']);
-                    } else if ($row['state_requestprint'] == '1') {
-                        $state = 'Đã gửi in';
-                        $randTime = rand(1, 10);
-                        //sleep($randTime);
-                        //auto_updateState($conn, $row['requestid'], $row['state_requestprint']);
-                    } else if ($row['state_requestprint'] == '2') {
-                        $state = 'Đã hoàn thành';
-                    } else {
-                        $state = 'Máy in hỏng';
-                    }
-                    echo $state;
-                    echo '
+                        if ($row['state_requestprint'] == '0' || empty($row['state_requestprint'])) {
+                            $state = '<a href="../ServiceUserLog/updateStatus.php?id=' . $row['requestid'] . '" class="link_text">Đã lưu</a>';
+                            $randTime = rand(1, 10);
+                            //sleep($randTime);
+                            //auto_updateState($conn, $row['requestid'], $row['state_requestprint']);
+                        } else if ($row['state_requestprint'] == '1') {
+                            $state = 'Đã gửi in';
+                            $randTime = rand(1, 10);
+                            //sleep($randTime);
+                            //auto_updateState($conn, $row['requestid'], $row['state_requestprint']);
+                        } else if ($row['state_requestprint'] == '2') {
+                            $state = 'Đã hoàn thành';
+                        } else {
+                            $state = 'Máy in hỏng';
+                        }
+                        echo $state;
+                        echo '
                             </td>
                             <td>
                             ';
-                    if ($row['state_requestprint'] != '1')
-                        echo '<a id="delete" href="../ServiceUserLog/ServiceUserLog.php?delete_id=' . $row['requestid'] . '">Delete</a>';
-                    echo '
+                        if ($row['state_requestprint'] != '1')
+                            echo '<a id="delete" href="../ServiceUserLog/ServiceUserLog.php?delete_id=' . $row['requestid'] . '">Delete</a>';
+                        echo '
                         </td>
                         </tr> 
                  ';
-                }
+                    }
 
-                ?>
-            </tbody>
-        </table>
+                    ?>
+                </tbody>
+            </table>
+        </section>
     </div>
     <!-- <script>
         function myFunction() {

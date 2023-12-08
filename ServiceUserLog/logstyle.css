@@ -5,36 +5,6 @@
     min-height: 582px;
 }
 
-.body h1 {
-    font-size: 26px;
-    color: var(--fontColor);
-    text-transform: uppercase;
-}
-
-.body .service-list {
-    margin-top: 31px;
-}
-
-.body .service-list div {
-    padding: 20px;
-    border-top: 1px solid var(--line-color);
-}
-
-.body .service-list div a {
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--blue);
-    text-transform: uppercase;
-}
-
-.body .service-list div a:hover {
-    text-decoration: underline;
-}
-
-.body .service-list .last-service {
-    border-bottom: 1px solid var(--line-color);
-}
-
 /* button design */
 .button {
     display: inline-block;
@@ -68,9 +38,8 @@
     display: inline-flex;
 }
 
-#wrapfilter form input,
-#wrapfilter button {
-    width: 240px;
+#wrapfilter form input {
+    width: 203px;
 }
 
 /* Design dropdown */
